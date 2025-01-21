@@ -1,50 +1,71 @@
 'use client';
-import React from 'react';
-import { motion } from 'framer-motion';
+
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
-    <div className="bg-black text-white min-h-screen">
-      {/* Navigation - Style Apple */}
-      <nav className="fixed w-full z-50 bg-black/80 backdrop-blur-xl border-b border-white/10">
-        <div className="max-w-[1120px] mx-auto">
-          <div className="flex items-center justify-between h-12">
-            <a href="/" className="text-xl font-bold">NewImmo.</a>
-            <div className="flex space-x-8 text-sm">
-              <a href="/discover" className="hover:text-[#FF4500] transition-colors">Découvrir</a>
-              <a href="/buy" className="hover:text-[#FF4500] transition-colors">Acheter</a>
-              <a href="/sell" className="hover:text-[#FF4500] transition-colors">Vendre</a>
-              <a href="/contact" className="hover:text-[#FF4500] transition-colors">Contact</a>
+    <main>
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full z-50 glass">
+        <div className="max-w-[1120px] mx-auto px-4">
+          <div className="flex items-center justify-between h-20">
+            <a href="/" className="text-xl font-bold text-gradient">
+              NewImmo
+            </a>
+            <div className="hidden md:flex items-center space-x-8">
+              <a href="/buy" className="text-sm text-gray-300 hover:text-white transition-colors duration-300">Acheter</a>
+              <a href="/sell" className="text-sm text-gray-300 hover:text-white transition-colors duration-300">Vendre</a>
+              <a href="/rent" className="text-sm text-gray-300 hover:text-white transition-colors duration-300">Louer</a>
+              <a href="/contact" className="text-sm text-gray-300 hover:text-white transition-colors duration-300">Contact</a>
             </div>
           </div>
         </div>
       </nav>
 
-      {/* Hero Section - Style Apple */}
-      <section className="pt-32 pb-24">
-        <div className="max-w-[1120px] mx-auto px-4">
-          <div className="text-center">
-            <h1 className="text-[120px] font-bold leading-none tracking-tight">
-              Immobilier.
-              <span className="bg-gradient-to-r from-[#FF4500] to-[#FF7A50] text-transparent bg-clip-text">
-                Réinventé.
-              </span>
+      {/* Hero Section */}
+      <section className="min-h-screen pt-20 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-30">
+          <div className="grid-bg w-full h-full"/>
+        </div>
+        
+        <div className="max-w-[1120px] mx-auto px-4 pt-32">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center"
+          >
+            <h1 className="text-[8vw] md:text-[6vw] font-bold tracking-tight leading-none mb-8">
+              <span className="text-gradient">Le futur</span><br/>
+              de l'immobilier.
             </h1>
-            <p className="mt-8 text-xl text-neutral-400 max-w-xl mx-auto">
-              Une nouvelle approche de l'immobilier, combinant technologie de pointe et expertise humaine.
+            <p className="text-xl text-gray-400 max-w-xl mx-auto mb-12">
+              Une nouvelle approche de l'immobilier, où technologie et expertise se rencontrent.
             </p>
-          </div>
-
-          <div className="mt-16 h-[600px] relative rounded-3xl overflow-hidden bg-neutral-900">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#FF4500]/20 to-transparent" />
-          </div>
+            <div className="flex flex-wrap justify-center gap-6">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-primary text-white rounded-full font-medium hover:bg-primary/90 transition-colors"
+              >
+                Explorer
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 border border-white/10 text-white rounded-full font-medium hover:bg-white/5 transition-colors"
+              >
+                En savoir plus
+              </motion.button>
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Features Section - Style Micron Labs */}
-      <section className="py-24 bg-neutral-950">
+      {/* Features Section */}
+      <section className="py-32 relative">
         <div className="max-w-[1120px] mx-auto px-4">
-          <div className="grid grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
                 title: "Recherche intelligente",
@@ -59,55 +80,87 @@ export default function Home() {
                 description: "Visitez les biens depuis chez vous en réalité virtuelle."
               }
             ].map((feature, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="p-8 rounded-2xl bg-black border border-neutral-800 hover:border-[#FF4500]/50 transition-colors"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="glass p-8 rounded-2xl card-hover"
               >
                 <h3 className="text-xl font-semibold mb-4">{feature.title}</h3>
-                <p className="text-neutral-400">{feature.description}</p>
-              </div>
+                <p className="text-gray-400">{feature.description}</p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Properties Section - Style Apple Products */}
-      <section className="py-24">
+      {/* Properties Showcase */}
+      <section className="py-32 bg-secondary/50">
         <div className="max-w-[1120px] mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-12">Biens d'exception</h2>
+          <motion.h2 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-4xl font-bold mb-16"
+          >
+            Biens d'exception
+          </motion.h2>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[1, 2].map((i) => (
-              <div
+              <motion.div
                 key={i}
-                className="group relative h-[600px] rounded-3xl overflow-hidden bg-neutral-900 hover:scale-[1.02] transition-transform duration-500"
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                whileHover={{ y: -10 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+                className="glass rounded-2xl overflow-hidden"
               >
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-8">
+                <div className="aspect-[4/3] bg-neutral-900 relative">
+                  {/* Image placeholder */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                </div>
+                <div className="p-8">
                   <h3 className="text-2xl font-bold mb-2">Villa Contemporaine</h3>
-                  <p className="text-neutral-400">Paris 16e - 280m²</p>
-                  <div className="mt-4 flex items-center justify-between">
+                  <p className="text-gray-400 mb-4">Paris 16e - 280m²</p>
+                  <div className="flex justify-between items-center">
                     <span className="text-2xl font-bold">2.850.000 €</span>
-                    <button className="px-6 py-3 rounded-full bg-white text-black font-medium hover:bg-[#FF4500] hover:text-white transition-colors">
+                    <button className="px-6 py-3 rounded-full bg-white text-black font-medium hover:bg-primary hover:text-white transition-colors">
                       Découvrir
                     </button>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-[#FF4500]">
-        <div className="max-w-[1120px] mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6">Prêt à commencer ?</h2>
-          <p className="text-xl mb-8 opacity-90">Laissez-nous vous guider dans votre projet immobilier.</p>
-          <button className="px-8 py-4 bg-black text-white rounded-full font-medium hover:bg-neutral-900 transition-colors">
-            Nous contacter
-          </button>
+      <section className="py-32">
+        <div className="max-w-[1120px] mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="glass rounded-3xl p-12 text-center"
+          >
+            <h2 className="text-4xl font-bold mb-6">Prêt à commencer ?</h2>
+            <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+              Laissez-nous vous guider dans votre projet immobilier.
+            </p>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 bg-primary text-white rounded-full font-medium hover:bg-primary/90 transition-colors"
+            >
+              Nous contacter
+            </motion.button>
+          </motion.div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }
