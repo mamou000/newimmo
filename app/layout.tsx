@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import Navbar from '../components/layout/Navbar'
+import Navbar from '@/components/layout/Navbar'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'NewImmo - Immobilier nouvelle génération',
-  description: 'Découvrez une nouvelle approche de l\'immobilier',
+  title: 'NewImmo',
+  description: 'La nouvelle approche de l\'immobilier',
 }
 
 export default function RootLayout({
@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr">
+    <html lang="fr" className="scroll-smooth">
       <body className={inter.className}>
         <Navbar />
         {children}
