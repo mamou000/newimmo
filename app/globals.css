@@ -3,25 +3,38 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --primary: #FF4500;
+  --primary-dark: #CC3700;
+  --background: #000000;
+  --text: #FFFFFF;
+  --gray-light: #2A2A2A;
+  --gray-medium: #1A1A1A;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: var(--background);
+  color: var(--text);
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #FF4500, #FF8C42);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.card-gradient {
+  background: linear-gradient(145deg, var(--gray-light), var(--gray-medium));
+}
+
+.hero-gradient {
+  background: radial-gradient(circle at 50% 50%, rgba(255, 69, 0, 0.15) 0%, transparent 70%);
+}
+
+.hover-card {
+  transition: all 0.3s ease;
+}
+
+.hover-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(255, 69, 0, 0.1);
 }
