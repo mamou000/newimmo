@@ -1,22 +1,47 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+ 
 @layer base {
+  :root {
+    --background: 0 0% 3%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 16 100% 50%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 9%;
+    --input: 0 0% 9%;
+    --ring: 16 100% 50%;
+    --radius: 0.75rem;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
   body {
-    font-feature-settings: "ss01" on, "ss02" on, "cv01" on, "cv03" on;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.text-balance {
+  text-wrap: balance;
 }
 
-/* Animations */
+/* Animation de base */
 .hover-scale {
   @apply transition-transform duration-500;
 }
@@ -25,12 +50,13 @@
   transform: scale(1.02);
 }
 
-/* Navigation */
+/* Effets de navigation */
 .nav-blur {
   backdrop-filter: saturate(180%) blur(20px);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* Custom Gradients */
+/* Gradients */
 .text-gradient {
   @apply bg-clip-text text-transparent bg-gradient-to-r from-[#FF4500] to-[#FF7A50];
 }
@@ -53,25 +79,24 @@
   box-shadow: 0 25px 50px -12px rgba(255, 69, 0, 0.15);
 }
 
-/* Modern Scrollbar */
+/* Scrollbar moderne */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: black;
+  @apply bg-background;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 5px;
+  @apply bg-muted rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #444;
+  @apply bg-muted-foreground;
 }
 
-/* Custom Animations */
+/* Animations personnalisées */
 @keyframes float {
   0% { transform: translateY(0px); }
   50% { transform: translateY(-20px); }
@@ -80,4 +105,20 @@
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(17, 17, 17, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Grid background */
+.grid-bg {
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 69, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 69, 0, 0.05) 1px, transparent 1px);
 }
