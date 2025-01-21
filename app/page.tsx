@@ -1,87 +1,109 @@
-import Button from '../components/common/Button'
-import Card from '../components/common/Card'
+'use client';
+import Image from 'next/image';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black">
+    <main className="relative min-h-screen">
+      {/* Background avec grille et bruit */}
+      <div className="fixed inset-0 grid-background -z-10"/>
+      <div className="fixed inset-0 noise-bg -z-10"/>
+
       {/* Hero Section */}
-      <section className="pt-32 pb-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#FF4500]/10 via-black to-black"/>
-        <div className="max-w-7xl mx-auto px-6 relative">
-          <h1 className="text-7xl font-bold mb-6">
-            <span className="text-white">Découvrez</span>
-            <br/>
-            <span className="text-[#FF4500]">l'immobilier</span>
-            <br/>
-            <span className="text-white">autrement</span>
-          </h1>
-          <p className="text-xl text-gray-400 mb-12 max-w-2xl">
-            Une nouvelle approche de l'immobilier, alliant technologie et expertise humaine.
-          </p>
-          <div className="flex gap-4">
-            <Button size="large">Découvrir</Button>
-            <Button variant="secondary" size="large">En savoir plus</Button>
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        <div className="absolute inset-0 gradient-blur"/>
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="max-w-4xl">
+            <h1 className="text-[8vw] md:text-[6vw] font-bold leading-tight mb-8">
+              <span className="heading-gradient">L'immobilier</span>
+              <br/>
+              réinventé
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-2xl">
+              Une expérience immobilière moderne et transparente pour tous vos projets.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <button className="btn-primary">
+                Explorer
+              </button>
+              <button className="btn-secondary">
+                En savoir plus
+              </button>
+            </div>
           </div>
         </div>
-      </section>
-
-      {/* Services Grid */}
-      <section className="py-24 relative">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card
-              title="Recherche Intelligente"
-              description="Trouvez le bien idéal grâce à notre algorithme de matching avancé."
-              link="/search"
-            />
-            <Card
-              title="Estimation Précise"
-              description="Obtenez une estimation détaillée basée sur les données du marché."
-              link="/estimate"
-            />
-            <Card
-              title="Visite Virtuelle"
-              description="Visitez les biens depuis chez vous en réalité virtuelle."
-              link="/virtual"
+        
+        {/* Éléments flottants */}
+        <div className="absolute right-0 top-1/4 w-1/3 aspect-square float hidden md:block">
+          <div className="w-full h-full relative">
+            <Image 
+              src="/images/property1.jpg"
+              alt="Property 1"
+              layout="fill"
+              objectFit="cover"
+              className="rounded-3xl"
             />
           </div>
         </div>
       </section>
 
       {/* Featured Section */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="relative bg-gradient-to-br from-black to-[#111] border border-white/10 rounded-3xl p-12 overflow-hidden">
-            <div className="absolute inset-0 bg-[#FF4500]/5"/>
-            <div className="relative">
-              <h2 className="text-4xl font-bold mb-6">Découvrez nos biens d'exception</h2>
-              <p className="text-gray-400 mb-8 max-w-2xl">
-                Une sélection unique de propriétés, choisie avec soin pour répondre à vos exigences.
-              </p>
-              <Button>Explorer la collection</Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
       <section className="py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { number: '2K+', label: 'Biens disponibles' },
-              { number: '98%', label: 'Clients satisfaits' },
-              { number: '24/7', label: 'Support client' },
-              { number: '10+', label: 'Années d\'expérience' },
-            ].map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-4xl font-bold text-[#FF4500] mb-2">{stat.number}</div>
-                <div className="text-gray-400">{stat.label}</div>
+        <div className="container mx-auto px-6">
+          <h2 className="text-4xl font-bold mb-12">
+            <span className="heading-gradient">Découvertes</span>
+          </h2>
+          <div className="modern-grid">
+            {/* Cartes de propriétés */}
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="modern-card p-6 h-[400px] flex flex-col">
+                <div className="relative w-full aspect-video mb-6 rounded-xl overflow-hidden">
+                  <Image 
+                    src={`/images/property${i}.jpg`}
+                    alt={`Property ${i}`}
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold mb-2">Villa Contemporaine</h3>
+                  <p className="text-gray-400">Paris 16e - 280m²</p>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-2xl font-bold heading-gradient">2 850 000 €</span>
+                  <button className="btn-secondary">Découvrir</button>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Services Section */}
+      <section className="py-24 relative overflow-hidden">
+        <div className="container mx-auto px-6">
+          <div className="glass-panel rounded-3xl p-12">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="text-4xl font-bold mb-6">
+                  <span className="heading-gradient">Services Premium</span>
+                </h2>
+                <p className="text-xl text-gray-400 mb-8">
+                  Une approche personnalisée de l'immobilier, combinant expertise humaine et technologie avancée.
+                </p>
+                <button className="btn-primary">Contacter un expert</button>
+              </div>
+              <div className="relative h-[400px] rounded-2xl overflow-hidden">
+                <Image 
+                  src="/images/service.jpg"
+                  alt="Service"
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
-  )
+  );
 }
