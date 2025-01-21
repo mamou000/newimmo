@@ -1,90 +1,102 @@
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Bienvenue sur&nbsp;
-          <code className="font-mono font-bold">NewImmo</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://github.com/mamou000/newimmo"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Votre plateforme immobilière de confiance
-          </a>
+    <div className="min-h-screen bg-black">
+      {/* Navigation */}
+      <nav className="fixed w-full z-50 bg-black/80 backdrop-blur-md">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between h-16 items-center">
+            <div className="flex-1 flex justify-between items-center">
+              <div className="flex-shrink-0">
+                <span className="text-2xl font-bold gradient-text">NewImmo</span>
+              </div>
+              <div className="hidden md:block">
+                <div className="ml-10 flex items-center space-x-8">
+                  <a href="#" className="text-gray-300 hover:text-white transition-colors">Acheter</a>
+                  <a href="#" className="text-gray-300 hover:text-white transition-colors">Vendre</a>
+                  <a href="#" className="text-gray-300 hover:text-white transition-colors">Louer</a>
+                  <a href="#" className="text-gray-300 hover:text-white transition-colors">Contact</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      </nav>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <h1 className="relative text-4xl font-bold dark:drop-shadow-[0_0_0.3rem_#ffffff70]">
-          NewImmo
-        </h1>
-      </div>
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-24 hero-gradient">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h1 className="text-5xl md:text-7xl font-bold mb-8">
+              <span className="gradient-text">Trouvez votre</span>
+              <br />
+              futur chez-vous
+            </h1>
+            <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
+              La nouvelle génération d'agence immobilière, pour une expérience moderne et transparente.
+            </p>
+          </div>
+        </div>
+      </section>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="#"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Acheter{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              →
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Trouvez la propriété de vos rêves parmi nos annonces.
-          </p>
-        </a>
+      {/* Features Grid */}
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Feature Card 1 */}
+            <div className="hover-card p-8 rounded-3xl card-gradient">
+              <h3 className="text-2xl font-bold mb-4">Acheter</h3>
+              <p className="text-gray-400 mb-6">
+                Découvrez des propriétés uniques sélectionnées pour vous.
+              </p>
+              <a href="#" className="text-[#FF4500] flex items-center">
+                Explorer →
+              </a>
+            </div>
 
-        <a
-          href="#"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Vendre{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              →
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Mettez votre bien en vente rapidement et simplement.
-          </p>
-        </a>
+            {/* Feature Card 2 */}
+            <div className="hover-card p-8 rounded-3xl card-gradient">
+              <h3 className="text-2xl font-bold mb-4">Vendre</h3>
+              <p className="text-gray-400 mb-6">
+                Vendez votre bien au meilleur prix avec notre expertise.
+              </p>
+              <a href="#" className="text-[#FF4500] flex items-center">
+                Commencer →
+              </a>
+            </div>
 
-        <a
-          href="#"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Louer{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              →
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Découvrez nos offres de location dans votre région.
-          </p>
-        </a>
+            {/* Feature Card 3 */}
+            <div className="hover-card p-8 rounded-3xl card-gradient">
+              <h3 className="text-2xl font-bold mb-4">Estimer</h3>
+              <p className="text-gray-400 mb-6">
+                Estimation gratuite de votre bien en quelques clics.
+              </p>
+              <a href="#" className="text-[#FF4500] flex items-center">
+                Estimer →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <a
-          href="#"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Contact{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              →
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Notre équipe est à votre disposition pour vous accompagner.
-          </p>
-        </a>
-      </div>
-    </main>
+      {/* CTA Section */}
+      <section className="py-24 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative z-10 bg-gradient-to-r from-gray-900 to-black p-12 rounded-3xl overflow-hidden">
+            <div className="absolute inset-0 bg-[#FF4500]/10 mix-blend-multiply"></div>
+            <div className="relative">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Prêt à commencer votre recherche ?
+              </h2>
+              <p className="text-gray-400 mb-8 max-w-2xl">
+                Nos experts sont là pour vous accompagner dans votre projet immobilier.
+              </p>
+              <a href="#" className="inline-block bg-[#FF4500] text-white px-8 py-4 rounded-xl hover:bg-[#CC3700] transition-colors">
+                Nous contacter
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   )
 }
